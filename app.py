@@ -70,14 +70,14 @@ c4.metric("KL Divergence",        f"{meta['tsne_kl_divergence']:.4f}")
 st.markdown("---")
 st.subheader("Sample Digit Images from MNIST")
 if os.path.exists("static/digit_grid.png"):
-    st.image("static/digit_grid.png", use_column_width=True)
+    st.image("static/digit_grid.png", use_container_width=True)
     st.caption("Two samples per digit class from the dataset used for t-SNE training.")
 
 # ── Main t-SNE Plot ───────────────────────────────────────────────────────────
 st.markdown("---")
 st.subheader("t-SNE 2D Embedding")
 if os.path.exists("static/tsne_plot.png"):
-    st.image("static/tsne_plot.png", use_column_width=True)
+    st.image("static/tsne_plot.png", use_container_width=True)
     st.caption(
         "Each point is one digit image projected to 2D. "
         "Well-separated clusters indicate t-SNE successfully captured the digit structure."
@@ -89,7 +89,7 @@ else:
 st.markdown("---")
 st.subheader("PCA vs t-SNE Comparison")
 if os.path.exists("static/pca_vs_tsne.png"):
-    st.image("static/pca_vs_tsne.png", use_column_width=True)
+    st.image("static/pca_vs_tsne.png", use_container_width=True)
     st.caption(
         "PCA (left) shows a linear projection - digits overlap heavily. "
         "t-SNE (right) reveals nonlinear cluster structure that PCA misses."
@@ -101,7 +101,7 @@ else:
 st.markdown("---")
 st.subheader("Perplexity Hyperparameter Effect")
 if os.path.exists("static/tsne_perplexity_comparison.png"):
-    st.image("static/tsne_perplexity_comparison.png", use_column_width=True)
+    st.image("static/tsne_perplexity_comparison.png", use_container_width=True)
     st.caption(
         "Perplexity controls the effective number of neighbours. "
         "Too low: fragmented clusters. Too high: global structure lost. "

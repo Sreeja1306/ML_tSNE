@@ -92,11 +92,11 @@ print("\nRunning t-SNE (perplexity=30)...")
 tsne_default = TSNE(
     n_components = 2,
     perplexity   = 30,
-    n_iter       = 1000,
+    max_iter     = 1000,
     learning_rate= "auto",
     init         = "pca",
     random_state = 42,
-    n_jobs       = -1
+    n_jobs       = None
 )
 X_tsne = tsne_default.fit_transform(X_pca50)
 print(f"t-SNE KL divergence: {tsne_default.kl_divergence_:.4f}")
@@ -177,7 +177,7 @@ kl_divs      = {}
 print("\nRunning perplexity comparison...")
 for p in perplexities:
     print(f"  perplexity={p}...")
-    t = TSNE(n_components=2, perplexity=p, n_iter=500,
+    t = TSNE(n_components=2, perplexity=p, max_iter=500,
              learning_rate="auto", init="pca", random_state=42)
     emb = t.fit_transform(X_perp)
     tsne_results[p] = emb
@@ -256,7 +256,7 @@ meta = {
     "pca_pre_dims":        PCA_DIMS,
     "pca_pre_variance":    round(float(pca_var), 4),
     "tsne_perplexity":     30,
-    "tsne_n_iter":         1000,
+    "tsne_n_iter":         1000,  # kept for display
     "tsne_kl_divergence":  round(float(tsne_default.kl_divergence_), 4),
     "knn_acc_tsne":        round(knn_acc, 4),
     "knn_acc_pca50":       round(knn_acc_pca, 4),
